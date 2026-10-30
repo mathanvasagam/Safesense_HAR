@@ -1,0 +1,489 @@
+{
+  "date": "2026-08-15",
+  "model": "SafeSense",
+  "workflow": "factorized_late_swa_seed22_final_promotion",
+  "status": "completed_promoted_current_selected_model",
+  "architecture": {
+    "base": "SafeSenseFactorized graph-aware skeleton + IMU temporal encoder + 32-token factorized time/modality attention",
+    "modalities": [
+      "skeleton",
+      "imu"
+    ],
+    "rgb_used": false,
+    "parameter_count": 440562,
+    "training_objective": "unchanged factorized clean + temporal + structured + subject-style views with expert, alignment and consistency terms",
+    "training_epochs": 60,
+    "swa_start_epoch": 45,
+    "swa_state_count": 16,
+    "swa_definition": "equal arithmetic average of completed model states at epochs 45 through 60",
+    "selected_seed": 22,
+    "selection_source": "leave-one-odd-subject-out development only"
+  },
+  "development": {
+    "subjects": [
+      1,
+      3,
+      5,
+      7
+    ],
+    "seeds": [
+      11,
+      22,
+      33
+    ],
+    "full_training_before_held_out_evaluation": true,
+    "official_even_subjects_loaded": false,
+    "result_matrix": [
+      {
+        "validation_subject": 1,
+        "seed": 11,
+        "clean_accuracy": 0.9906542056074766,
+        "macro_f1": 0.9905937683715462,
+        "temporal_corrupted_accuracy": 0.9719626168224299,
+        "structured_corrupted_accuracy": 0.9252336448598131,
+        "robust_selection_accuracy": 0.9485981308411215,
+        "swa_state_count": 16,
+        "modal_result_path": "/results/safesense-factorized-swa-odd-fold/fold-1/seed-11/result.json"
+      },
+      {
+        "validation_subject": 1,
+        "seed": 22,
+        "clean_accuracy": 0.9532710280373832,
+        "macro_f1": 0.9448559670781894,
+        "temporal_corrupted_accuracy": 0.9439252336448598,
+        "structured_corrupted_accuracy": 0.9439252336448598,
+        "robust_selection_accuracy": 0.9439252336448598,
+        "swa_state_count": 16,
+        "modal_result_path": "/results/safesense-factorized-swa-odd-fold/fold-1/seed-22/result.json"
+      },
+      {
+        "validation_subject": 1,
+        "seed": 33,
+        "clean_accuracy": 0.9532710280373832,
+        "macro_f1": 0.9482657260435038,
+        "temporal_corrupted_accuracy": 0.9158878504672897,
+        "structured_corrupted_accuracy": 0.8785046728971962,
+        "robust_selection_accuracy": 0.897196261682243,
+        "swa_state_count": 16,
+        "modal_result_path": "/results/safesense-factorized-swa-odd-fold/fold-1/seed-33/result.json"
+      },
+      {
+        "validation_subject": 3,
+        "seed": 11,
+        "clean_accuracy": 0.8981481481481481,
+        "macro_f1": 0.8893592004703116,
+        "temporal_corrupted_accuracy": 0.8888888888888888,
+        "structured_corrupted_accuracy": 0.8425925925925926,
+        "robust_selection_accuracy": 0.8657407407407407,
+        "swa_state_count": 16,
+        "modal_result_path": "/results/safesense-factorized-swa-odd-fold/fold-3/seed-11/result.json"
+      },
+      {
+        "validation_subject": 3,
+        "seed": 22,
+        "clean_accuracy": 0.9259259259259259,
+        "macro_f1": 0.9136978248089358,
+        "temporal_corrupted_accuracy": 0.8425925925925926,
+        "structured_corrupted_accuracy": 0.7962962962962963,
+        "robust_selection_accuracy": 0.8194444444444444,
+        "swa_state_count": 16,
+        "modal_result_path": "/results/safesense-factorized-swa-odd-fold/fold-3/seed-22/result.json"
+      },
+      {
+        "validation_subject": 3,
+        "seed": 33,
+        "clean_accuracy": 0.8981481481481481,
+        "macro_f1": 0.8978648923093367,
+        "temporal_corrupted_accuracy": 0.8796296296296297,
+        "structured_corrupted_accuracy": 0.7777777777777778,
+        "robust_selection_accuracy": 0.8287037037037037,
+        "swa_state_count": 16,
+        "modal_result_path": "/results/safesense-factorized-swa-odd-fold/fold-3/seed-33/result.json"
+      },
+      {
+        "validation_subject": 5,
+        "seed": 11,
+        "clean_accuracy": 0.9166666666666666,
+        "macro_f1": 0.8961894073005183,
+        "temporal_corrupted_accuracy": 0.8796296296296297,
+        "structured_corrupted_accuracy": 0.8981481481481481,
+        "robust_selection_accuracy": 0.8888888888888888,
+        "swa_state_count": 16,
+        "modal_result_path": "/results/safesense-factorized-swa-odd-fold/fold-5/seed-11/result.json"
+      },
+      {
+        "validation_subject": 5,
+        "seed": 22,
+        "clean_accuracy": 0.9537037037037037,
+        "macro_f1": 0.9488643044198599,
+        "temporal_corrupted_accuracy": 0.9259259259259259,
+        "structured_corrupted_accuracy": 0.8611111111111112,
+        "robust_selection_accuracy": 0.8935185185185186,
+        "swa_state_count": 16,
+        "modal_result_path": "/results/safesense-factorized-swa-odd-fold/fold-5/seed-22/result.json"
+      },
+      {
+        "validation_subject": 5,
+        "seed": 33,
+        "clean_accuracy": 0.9351851851851852,
+        "macro_f1": 0.9228795895462562,
+        "temporal_corrupted_accuracy": 0.8888888888888888,
+        "structured_corrupted_accuracy": 0.8796296296296297,
+        "robust_selection_accuracy": 0.8842592592592593,
+        "swa_state_count": 16,
+        "modal_result_path": "/results/safesense-factorized-swa-odd-fold/fold-5/seed-33/result.json"
+      },
+      {
+        "validation_subject": 7,
+        "seed": 11,
+        "clean_accuracy": 0.9351851851851852,
+        "macro_f1": 0.9259473037250815,
+        "temporal_corrupted_accuracy": 0.8518518518518519,
+        "structured_corrupted_accuracy": 0.8888888888888888,
+        "robust_selection_accuracy": 0.8703703703703703,
+        "swa_state_count": 16,
+        "modal_result_path": "/results/safesense-factorized-swa-odd-fold/fold-7/seed-11/result.json"
+      },
+      {
+        "validation_subject": 7,
+        "seed": 22,
+        "clean_accuracy": 0.9259259259259259,
+        "macro_f1": 0.9109053497942387,
+        "temporal_corrupted_accuracy": 0.8703703703703703,
+        "structured_corrupted_accuracy": 0.8333333333333334,
+        "robust_selection_accuracy": 0.8518518518518519,
+        "swa_state_count": 16,
+        "modal_result_path": "/results/safesense-factorized-swa-odd-fold/fold-7/seed-22/result.json"
+      },
+      {
+        "validation_subject": 7,
+        "seed": 33,
+        "clean_accuracy": 0.9166666666666666,
+        "macro_f1": 0.9091122868900647,
+        "temporal_corrupted_accuracy": 0.8796296296296297,
+        "structured_corrupted_accuracy": 0.9074074074074074,
+        "robust_selection_accuracy": 0.8935185185185186,
+        "swa_state_count": 16,
+        "modal_result_path": "/results/safesense-factorized-swa-odd-fold/fold-7/seed-33/result.json"
+      }
+    ],
+    "fold_aggregates": {
+      "1": {
+        "clean_accuracy_mean": 0.9657320872274143,
+        "clean_accuracy_min_seed": 0.9532710280373832,
+        "macro_f1_mean": 0.9612384871644132,
+        "robust_selection_accuracy_mean": 0.9299065420560748,
+        "robust_selection_accuracy_min_seed": 0.897196261682243
+      },
+      "3": {
+        "clean_accuracy_mean": 0.9074074074074074,
+        "clean_accuracy_min_seed": 0.8981481481481481,
+        "macro_f1_mean": 0.9003073058628613,
+        "robust_selection_accuracy_mean": 0.8379629629629629,
+        "robust_selection_accuracy_min_seed": 0.8194444444444444
+      },
+      "5": {
+        "clean_accuracy_mean": 0.9351851851851852,
+        "clean_accuracy_min_seed": 0.9166666666666666,
+        "macro_f1_mean": 0.9226444337555448,
+        "robust_selection_accuracy_mean": 0.888888888888889,
+        "robust_selection_accuracy_min_seed": 0.8842592592592593
+      },
+      "7": {
+        "clean_accuracy_mean": 0.9259259259259259,
+        "clean_accuracy_min_seed": 0.9166666666666666,
+        "macro_f1_mean": 0.9153216468031283,
+        "robust_selection_accuracy_mean": 0.8719135802469136,
+        "robust_selection_accuracy_min_seed": 0.8518518518518519
+      }
+    },
+    "all_seed_fold_aggregate": {
+      "clean_accuracy_mean": 0.9335626514364832,
+      "clean_accuracy_worst_seed_fold": 0.8981481481481481,
+      "macro_f1_mean": 0.924877968396487,
+      "robust_selection_accuracy_mean": 0.8821679935387101,
+      "robust_selection_accuracy_worst_seed_fold": 0.8194444444444444
+    },
+    "per_seed_aggregates": {
+      "11": {
+        "clean_accuracy_mean": 0.9351635514018691,
+        "clean_accuracy_worst_fold": 0.8981481481481481,
+        "macro_f1_mean": 0.9255224199668644,
+        "robust_selection_accuracy_mean": 0.8933995327102804,
+        "robust_selection_accuracy_worst_fold": 0.8657407407407407
+      },
+      "22": {
+        "clean_accuracy_mean": 0.9397066458982347,
+        "clean_accuracy_worst_fold": 0.9259259259259259,
+        "macro_f1_mean": 0.929580861525306,
+        "robust_selection_accuracy_mean": 0.8771850121149187,
+        "robust_selection_accuracy_worst_fold": 0.8194444444444444
+      },
+      "33": {
+        "clean_accuracy_mean": 0.9258177570093458,
+        "clean_accuracy_worst_fold": 0.8981481481481481,
+        "macro_f1_mean": 0.9195306236972903,
+        "robust_selection_accuracy_mean": 0.8759194357909311,
+        "robust_selection_accuracy_worst_fold": 0.8287037037037037
+      }
+    },
+    "frozen_gate": {
+      "clean_accuracy_mean_gt": 0.9374783662166839,
+      "clean_accuracy_worst_fold_gt": 0.8611111111111112,
+      "robust_selection_accuracy_mean_gt": 0.8667575285565938,
+      "robust_selection_accuracy_worst_fold_gt": 0.7777777777777778
+    },
+    "selected_seed22": {
+      "clean_accuracy_mean": 0.9397066458982347,
+      "clean_accuracy_worst_fold": 0.9259259259259259,
+      "macro_f1_mean": 0.929580861525306,
+      "robust_selection_accuracy_mean": 0.8771850121149187,
+      "robust_selection_accuracy_worst_fold": 0.8194444444444444
+    },
+    "gate_checks": {
+      "clean_mean": true,
+      "clean_worst_fold": true,
+      "robust_mean": true,
+      "robust_worst_fold": true,
+      "all_pass": true
+    },
+    "discarded_same_pass_variants": [
+      {
+        "name": "subject-invariant normalized prototype + contrastive",
+        "reason": "subject-3 seed22 collapsed after full training",
+        "subject3_seed22_clean_accuracy": 0.7407407407407407
+      },
+      {
+        "name": "prototype subject-risk/mixup + EMA",
+        "reason": "subject-3 seed22 remained below original factorized control",
+        "subject3_seed22_clean_accuracy": 0.7962962962962963
+      },
+      {
+        "name": "linear-head subject-risk/mixup + EMA",
+        "reason": "subject-3 seed22 remained below original factorized control",
+        "subject3_seed22_clean_accuracy": 0.8240740740740741
+      }
+    ]
+  },
+  "frozen_posthoc_final": {
+    "model": "SafeSense",
+    "workflow": "factorized_late_swa_frozen_final",
+    "status": "completed",
+    "seed": 22,
+    "epochs": 60,
+    "swa_start_epoch": 45,
+    "swa_state_count": 16,
+    "training_subjects": [
+      1,
+      3,
+      5,
+      7
+    ],
+    "official_test_subjects": [
+      2,
+      4,
+      6,
+      8
+    ],
+    "official_test_loaded_after_training": true,
+    "parameter_count": 440562,
+    "test_loss": 0.18013686200019735,
+    "accuracy": 0.9627906976744186,
+    "macro_f1": 0.96364139833354,
+    "temporal_corrupted_accuracy": 0.9372093023255814,
+    "structured_corrupted_accuracy": 0.9232558139534883,
+    "robust_selection_accuracy": 0.9302325581395349,
+    "checkpoint": "/results/safesense-factorized-swa-final/seed-22/checkpoint.pt",
+    "stats": "/results/safesense-factorized-swa-final/seed-22/stats.npz",
+    "environment": {
+      "python": "3.10.17",
+      "cuda": "12.8",
+      "gpu": "Tesla T4",
+      "numpy": "2.2.6",
+      "scipy": "1.15.3",
+      "torch": "2.10.0+cu128"
+    },
+    "modal_app_id": "ap-UDDWNzPgf3wdKbMmvR9ARN",
+    "no_posthoc_retuning_allowed": true
+  },
+  "matched_corruption_comparison": {
+    "method": "new frozen SafeSense checkpoint evaluated on the exact preserved 25-scenario corruption protocol; Fusion-GCN predictions reused from cache/robustness-predictions.npz because legacy Fusion checkpoints are absent from the replacement Modal volume",
+    "candidate": {
+      "clean_accuracy_mean": 0.9627906976744186,
+      "clean_macro_f1_mean": 0.96364139833354,
+      "category_accuracy_mean": {
+        "shift": 0.9595930232558139,
+        "frame_loss": 0.9434108527131784,
+        "noise": 0.8829457364341083,
+        "missing": 0.5705426356589146,
+        "composite": 0.9
+      },
+      "category_macro_f1_mean": {
+        "shift": 0.9600567961047538,
+        "frame_loss": 0.9441747556923312,
+        "noise": 0.8800505651662826,
+        "missing": 0.5557636183111218,
+        "composite": 0.9002521541526327
+      },
+      "equal_category_corrupted_accuracy_mean": 0.851298449612403,
+      "equal_category_corrupted_macro_f1_mean": 0.8480595778854244
+    },
+    "fusion_gcn_three_seed_aggregate": {
+      "clean_accuracy_mean": 0.9348837209302325,
+      "clean_macro_f1_mean": 0.9346389528387952,
+      "category_accuracy_mean": {
+        "shift": 0.9332364341085272,
+        "frame_loss": 0.6062015503875968,
+        "noise": 0.23733850129198963,
+        "missing": 0.3214470284237726,
+        "composite": 0.12325581395348839
+      },
+      "category_macro_f1_mean": {
+        "shift": 0.9330100310097534,
+        "frame_loss": 0.5899042762251682,
+        "noise": 0.20505736485692344,
+        "missing": 0.2971868959583009,
+        "composite": 0.07792075503764202
+      },
+      "equal_category_corrupted_accuracy_mean": 0.444295865633075,
+      "equal_category_corrupted_macro_f1_mean": 0.42061586461755757
+    },
+    "fusion_gcn_seed22": {
+      "clean_accuracy_mean": 0.9441860465116279,
+      "clean_macro_f1_mean": 0.9456698360785691,
+      "category_accuracy_mean": {
+        "shift": 0.9354651162790697,
+        "frame_loss": 0.6368217054263566,
+        "noise": 0.301937984496124,
+        "missing": 0.3209302325581395,
+        "composite": 0.19069767441860466
+      },
+      "category_macro_f1_mean": {
+        "shift": 0.9365083914683381,
+        "frame_loss": 0.6329226076051511,
+        "noise": 0.25694175526765456,
+        "missing": 0.29795108794176345,
+        "composite": 0.12848254747141513
+      },
+      "equal_category_corrupted_accuracy_mean": 0.4771705426356589,
+      "equal_category_corrupted_macro_f1_mean": 0.4505612779508644
+    },
+    "deltas_candidate_minus_fusion_aggregate": {
+      "clean_accuracy_mean": 0.027906976744186074,
+      "clean_macro_f1_mean": 0.029002445494744844,
+      "equal_category_corrupted_accuracy_mean": 0.407002583979328,
+      "equal_category_corrupted_macro_f1_mean": 0.42744371326786684
+    },
+    "deltas_candidate_minus_fusion_seed22": {
+      "clean_accuracy_mean": 0.018604651162790753,
+      "clean_macro_f1_mean": 0.017971562254970874,
+      "equal_category_corrupted_accuracy_mean": 0.3741279069767441,
+      "equal_category_corrupted_macro_f1_mean": 0.39749829993456
+    },
+    "protocol": {
+      "corruption_seed": 20260814,
+      "scenario_count": 25,
+      "training_subjects": [
+        1,
+        3,
+        5,
+        7
+      ],
+      "test_subjects": [
+        2,
+        4,
+        6,
+        8
+      ],
+      "noise_scales": {
+        "skeleton": 0.29760614349538295,
+        "imu": 79.29619498449237
+      }
+    }
+  },
+  "matched_t4_efficiency": {
+    "protocol": {
+      "device": "Tesla T4",
+      "dtype": "float32",
+      "batch_size": 1,
+      "warmups": 200,
+      "iterations": 1000,
+      "scope": "model-only forward; preprocessing excluded"
+    },
+    "candidate": {
+      "device": "cuda",
+      "warmups": 200,
+      "iterations": 1000,
+      "parameters": 440562,
+      "checkpoint_bytes_fp32": 1814707,
+      "median_ms_model_only": 9.399646500000358,
+      "p95_ms_model_only": 9.741272400000867
+    },
+    "fusion_gcn_preserved_seed11": {
+      "device": "cuda",
+      "warmups": 200,
+      "iterations": 1000,
+      "parameters": 3456631,
+      "checkpoint_bytes_fp32": 14066827,
+      "median_ms_model_only": 13.225211500001777,
+      "p95_ms_model_only": 13.55100359999799
+    },
+    "fusion_to_safesense_median_latency_ratio": 1.40699030543343,
+    "candidate_parameter_reduction_vs_fusion": 0.8725458401547634,
+    "candidate_checkpoint_reduction_vs_fusion": 0.8709938637903203,
+    "candidate_median_latency_reduction_vs_fusion": 0.28926304883675436,
+    "candidate_p95_latency_reduction_vs_fusion": 0.28114015112487234,
+    "modal_app_id": "ap-ulBHBWk8srtveZD41I4Md3"
+  },
+  "fusion_gcn_project_reference": {
+    "clean_accuracy_mean": 0.9348837209302325,
+    "clean_macro_f1_mean": 0.9346389528387952,
+    "equal_category_corrupted_accuracy_mean": 0.444295865633075,
+    "equal_category_corrupted_macro_f1_mean": 0.42061586461755757,
+    "parameter_count": 3456631
+  },
+  "strict_project_pareto": {
+    "clean_accuracy_higher": true,
+    "macro_f1_higher": true,
+    "equal_category_corrupted_accuracy_higher": true,
+    "equal_category_corrupted_macro_f1_higher": true,
+    "parameters_lower": true,
+    "checkpoint_bytes_lower": true,
+    "median_latency_lower": true,
+    "p95_latency_lower": true,
+    "all_measured_project_dimensions_pass": true
+  },
+  "literature_context": {
+    "current_reported_reference": "UCFFormer, Neurocomputing 655 (2025) 131374, DOI 10.1016/j.neucom.2025.131374",
+    "reported_utd_mhad_top1_accuracy": 0.9999,
+    "reported_modalities": [
+      "RGB",
+      "skeleton",
+      "inertial"
+    ],
+    "safesense_accuracy_gap_percentage_points": 3.7109302325581406,
+    "claim": "SafeSense is not claimed as UTD-MHAD SOTA. It is competitive with strong multimodal results while using no RGB and strictly beats the project reproduction of Fusion-GCN across all measured project dimensions. Published UCFFormer is not treated as a matched comparison because its sensor set and evaluation details differ.",
+    "used_for_model_selection": false
+  },
+  "promotion_decision": {
+    "promoted": true,
+    "current_selected_model": "SafeSenseFactorized, seed 22, 60 epochs, equal SWA over epochs 45-60",
+    "supersedes": "three-seed temporal33 -> adapter27 SafeSense",
+    "posthoc_even_results_must_not_be_used_for_retuning": true
+  },
+  "source_artifacts": [
+    "/results/safesense-factorized-swa-odd-fold/fold-{1,3,5,7}/seed-{11,22,33}/result.json",
+    "/results/safesense-factorized-swa-final/result.json",
+    "/results/safesense-factorized-swa-final/seed-22/checkpoint.pt",
+    "/results/safesense-factorized-swa-final-efficiency/result.json",
+    "cache/robustness-predictions.npz",
+    "research/robustness-efficiency-results.json",
+    "research/paired-final-results.json"
+  ],
+  "validation": {
+    "pytest": "91 passed in 7.79s",
+    "py_compile": "passed: src/safesense/safesense.py and modal_app.py",
+    "json_tool": "passed",
+    "git_diff_check": "passed"
+  }
+}

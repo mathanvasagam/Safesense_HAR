@@ -1,0 +1,96 @@
+{
+  "date": "2026-08-16",
+  "status": "completed_inference_only_optimization",
+  "model": "SafeSenseFactorized",
+  "checkpoint_policy": "unchanged frozen seed-22 60-epoch late-SWA checkpoint; no retraining or parameter changes",
+  "optimization": {
+    "name": "batch1_cuda_graph_replay",
+    "scope": "inference-only deployment path",
+    "input_copy_scope": "device-to-device copies into static CUDA Graph input buffers are included in measured model-only latency",
+    "excluded_scope": "preprocessing and host-to-device transfer",
+    "graph_capture_equivalence": "temporary branch-free equivalents of internal-gap repair and attention safe-valid masking are used only during capture, then original eager functions are restored"
+  },
+  "bottleneck_profile": {
+    "device": "Tesla T4",
+    "eager_profile_median_ms": 9.325830999999507,
+    "eager_profile_p95_ms": 9.64245504999992,
+    "profiled_forwards": 10,
+    "cuda_kernel_launches_total": 4270,
+    "cuda_kernel_launches_per_forward": 427.0,
+    "cudaLaunchKernel_cpu_self_us_total": 28748.076000000376,
+    "cudaLaunchKernel_cpu_self_us_per_forward": 2874.8076000000375,
+    "dominant_fragmentation": [
+      "small addmm/mm/bmm kernels",
+      "copy kernels",
+      "LayerNorm and GroupNorm kernels",
+      "convolution/depthwise-convolution kernels",
+      "pointwise multiply/add/GELU kernels"
+    ],
+    "conclusion": "batch-1 latency is dominated by fragmented kernel-launch/runtime overhead rather than parameter count alone"
+  },
+  "prediction_equivalence": {
+    "official_even_subjects": [2, 4, 6, 8],
+    "scenario_count": 25,
+    "samples_per_scenario": 430,
+    "total_predictions_compared": 10750,
+    "prediction_mismatches": 0,
+    "representative_max_abs_logit_difference": 0.0,
+    "aggregate_metrics_exact_match": true,
+    "clean_accuracy": 0.9627906976744186,
+    "clean_macro_f1": 0.96364139833354,
+    "equal_category_corrupted_accuracy": 0.851298449612403,
+    "equal_category_corrupted_macro_f1": 0.8480595778854244,
+    "category_accuracy_mean": {
+      "shift": 0.9595930232558139,
+      "frame_loss": 0.9434108527131784,
+      "noise": 0.8829457364341083,
+      "missing": 0.5705426356589146,
+      "composite": 0.9
+    }
+  },
+  "matched_t4_benchmark": {
+    "device": "cuda Tesla T4",
+    "dtype": "float32",
+    "batch_size": 1,
+    "warmups": 200,
+    "iterations": 1000,
+    "SafeSense_eager": {
+      "parameters": 440562,
+      "checkpoint_bytes_fp32": 1814707,
+      "median_ms_model_only": 9.654000999999468,
+      "p95_ms_model_only": 11.416339950000419
+    },
+    "SafeSense_cuda_graph": {
+      "parameters": 440562,
+      "checkpoint_bytes_fp32": 1814707,
+      "median_ms_model_only": 1.732354499997868,
+      "p95_ms_model_only": 1.7395442499989144
+    },
+    "Fusion_GCN_eager": {
+      "parameters": 3456631,
+      "checkpoint_bytes_fp32": 14066827,
+      "median_ms_model_only": 13.298895500000185,
+      "p95_ms_model_only": 15.088487450000088
+    },
+    "Fusion_GCN_cuda_graph": {
+      "parameters": 3456631,
+      "checkpoint_bytes_fp32": 14066827,
+      "median_ms_model_only": 5.017336000001649,
+      "p95_ms_model_only": 5.064619600001308
+    },
+    "SafeSense_eager_to_cuda_graph_speedup": 5.572762965092508,
+    "SafeSense_median_latency_reduction": 0.8205557985753302,
+    "Fusion_to_SafeSense_cuda_graph_latency_ratio": 2.8962524702696957,
+    "SafeSense_cuda_graph_median_latency_lower_fraction_vs_Fusion_cuda_graph": 0.6547262332047727
+  },
+  "outcome": {
+    "metrics_changed": false,
+    "weights_changed": false,
+    "architecture_changed": false,
+    "training_changed": false,
+    "checkpoint_changed": false,
+    "latency_target_at_least_2x_faster_than_Fusion_GCN": true,
+    "fair_optimized_speedup_vs_Fusion_GCN": 2.8962524702696957
+  },
+  "remote_benchmark_result": "/results/safesense-factorized-swa-final-efficiency/result.json"
+}

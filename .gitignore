@@ -1,0 +1,34 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+# Data, generated outputs and local files
+data/
+cache/
+checkpoints/
+runs/
+scratch/
+outputs/
+*.pt
+*.pth
+*.ckpt
+*.npz
+*.npy
+.env
+.env.*
+!.env.example
+# Build and editor artifacts
+dist/
+build/
+node_modules/
+.next/
+coverage/
+.vscode/
+.idea/
+.DS_Store
+# Never nest git metadata
+.git/
